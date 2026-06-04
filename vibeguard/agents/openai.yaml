@@ -1,0 +1,7 @@
+interface:
+  display_name: "VibeGuard"
+  short_description: "本地项目安全扫描与报告生成"
+  default_prompt: "Use $vibeguard to scan this project for dependency vulnerabilities, hardcoded secrets, sensitive tracked files, and gitignore risks."
+
+policy:
+  allow_implicit_invocation: true

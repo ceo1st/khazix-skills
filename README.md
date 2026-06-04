@@ -7,7 +7,7 @@
 #### 我自己每天在用的一些 AI Skill，都开源在这里
 
 [![License](https://img.shields.io/badge/License-MIT-3B82F6?style=for-the-badge)](./LICENSE)
-[![Skills](https://img.shields.io/badge/Skills-5-10B981?style=for-the-badge)](#-skills)
+[![Skills](https://img.shields.io/badge/Skills-6-10B981?style=for-the-badge)](#-skills)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-8B5CF6?style=for-the-badge)](https://agentskills.io)
 
 ![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-D97706?style=flat-square&logo=anthropic&logoColor=white)
@@ -32,6 +32,7 @@
 | ✍️ [**khazix-writer（卡兹克写作）**](#-khazix-writer卡兹克写作) | 装上之后，Agent 用我的口吻和节奏写公众号长文 | [公众号文章](https://mp.weixin.qq.com/s/AtxGrii_K-nzkwUM9SNhEg) |
 | 🔥 [**aihot（AI HOT 资讯查询）**](#-aihotai-hot-资讯查询) | 让 Agent 用一句话拿到 aihot.virxact.com 每天的 AI HOT 日报和全部 AI 动态，无需 API Key | [aihot.virxact.com](https://aihot.virxact.com) |
 | 💽 [**storage-analyzer（清理垃圾）**](#-storage-analyzer清理垃圾) | 一句话扫描 Mac / Windows 整机磁盘，三色分级给清理决策，网页上一键移废纸篓 | [公众号文章](https://mp.weixin.qq.com/s/NyOMIlOD986OC4SI9vmxlA) |
+| 🛡️ [**vibeguard（补天）**](#-vibeguard补天) | 一句"扫一下项目安全"，本地查依赖漏洞、硬编码密钥、`.env` 误提交，产出只读 HTML + Markdown 审计报告 | — |
 
 ---
 
@@ -234,6 +235,41 @@ storage analysis
 ```
 
 → [SKILL.md](./storage-analyzer/SKILL.md) · [公众号讲解](https://mp.weixin.qq.com/s/NyOMIlOD986OC4SI9vmxlA)
+
+</td></tr>
+</table>
+
+<table>
+<tr><td>
+
+### 🛡️ vibeguard（补天）
+
+> *"上线前花两分钟自己扫一遍，比上线后被别人扫一遍强。"*
+
+随口跟 Agent 说一句"帮我看看项目有没有安全问题"或"扫一下依赖漏洞"，它会在**本地**把你的项目过一遍，最后产出一份**只读 HTML 报告 + Markdown 审计报告**。报告面向产品经理、项目负责人这类非安全背景的人写，讲清楚"是否影响发布、要不要马上排期、需要研发/运维确认什么"。
+
+**它会查什么**
+
+- **依赖漏洞** — 从 lockfile 提取依赖，逐个查已知漏洞（CVE / GHSA），按严重度排序
+- **硬编码密钥** — 扫代码里写死的 API Key / token / 密码，报告只给脱敏预览，不泄露完整密钥
+- **敏感文件误提交** — `.env`、私钥、证书是不是被 git 跟踪了
+- **仓库卫生** — `.gitignore` 该挡的有没有挡住
+- **过期依赖** — 给升级建议，但不会把"过期"夸大成"有漏洞"
+
+支持 JavaScript / TypeScript、Python、Go、Rust。
+
+**它的边界（很重要）**
+
+它解决的是**依赖和仓库卫生**这一层的安全问题，不能替代代码审计、渗透测试或部署安全评估——业务逻辑、权限、SQL 注入、XSS 这些代码层风险，仍然得单独复核。报告里会反复强调这点，不制造恐慌，也不给你虚假的安全感。
+
+**两条铁律**
+
+- **全程只读，绝不擅自动手。** 扫描只读文件、调漏洞 API，不碰你的源码和依赖；网页报告也只用来读，没有任何会触发本地操作的按钮
+- **修复要你点头。** 看完报告，你在对话里说一句"可以修 / 修复 / OK"，Agent 才会动手升级或清理
+
+**🌐 跨平台**：Claude Code · Codex · OpenCode · OpenClaw
+
+→ [SKILL.md](./vibeguard/SKILL.md)
 
 </td></tr>
 </table>
