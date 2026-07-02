@@ -29,7 +29,7 @@ Every skill here is a structured instruction set that agents load directly. Foll
 |---|---|---|
 | 💽 [**storage-analyzer**](#-storage-analyzer) | One sentence to scan your whole Mac / Windows drive — three-tier cleanup plan, one-click trash from the browser | [Article (Chinese)](https://mp.weixin.qq.com/s/NyOMIlOD986OC4SI9vmxlA) |
 | 🔥 [**aihot**](#-aihot-ai-hot-news-query) | Lets your agent pull AI HOT's daily report and all AI news from aihot.virxact.com with one Chinese sentence — no API key | [aihot.virxact.com](https://aihot.virxact.com) |
-| 🧹 [**neat-freak**](#-neat-freak) | After a session, run `/neat` to reconcile your project docs, CLAUDE.md, and agent memory with the code | [Article (Chinese)](https://mp.weixin.qq.com/s/tg1wd-iN2gWHWhXdY0faeg) |
+| 🧹 [**neat-freak**](#-neat-freak) | After a session, run `/neat` to reconcile docs, CLAUDE.md, and agent memory, then audit whether project rules are actually followed | [Article (Chinese)](https://mp.weixin.qq.com/s/tg1wd-iN2gWHWhXdY0faeg) |
 | 🔭 [**hv-analysis**](#-hv-analysis-horizontal-vertical-analysis) | Drop a product/company/concept into it and get a 10k–30k word PDF research report | [Article (Chinese)](https://mp.weixin.qq.com/s/Y_uRMYBmdLWUPnz_ac7jWA) |
 | ✍️ [**khazix-writer**](#-khazix-writer) | Makes the agent write long-form Chinese articles in my personal voice | [Article (Chinese)](https://mp.weixin.qq.com/s/AtxGrii_K-nzkwUM9SNhEg) |
 
@@ -140,7 +140,7 @@ curl -fsSL https://aihot.virxact.com/aihot-skill/install.sh | bash
 
 > *"If I don't run /neat before closing the window, I get itchy. Like there's something stuck in my throat."*
 
-After every session, run `/neat`. It reconciles whatever you changed in this conversation against three layers of project knowledge: **docs**, **root CLAUDE.md / AGENTS.md**, and the **agent's memory system**. Outputs a change summary at the end.
+After every session, run `/neat`. It reconciles whatever you changed in this conversation against three layers of project knowledge: **docs**, **root CLAUDE.md / AGENTS.md**, and the **agent's memory system**. It also checks whether project rules are actually being followed, then outputs a change summary at the end.
 
 **Why you'd want this**
 
@@ -154,7 +154,7 @@ The agent isn't getting dumber — your docs and memory are. neat-freak's job is
 - Project docs/ and README (read by teammates and downstream developers)
 - The agent's own memory system (read by future you across sessions)
 
-These three layers have different audiences and don't overlap. That's exactly why I wasn't satisfied with Claude Code's AutoDream — it only touched memory, leaving the docs to rot.
+These three layers have different audiences and don't overlap. This version also treats rules as knowledge: CLAUDE.md / AGENTS.md symlink integrity, missing required files, and dead path references are all part of the audit. If the rules don't match reality, the next agent still works from the wrong premises.
 
 **How to trigger**
 
@@ -167,7 +167,7 @@ tidy up docs     # natural language
 
 **🌐 Cross-platform**: Claude Code · Codex · OpenCode · OpenClaw
 
-[![ClawHub](https://img.shields.io/badge/ClawHub-v1.0.1-EC4899?style=flat-square)](https://clawhub.ai)
+[![ClawHub](https://img.shields.io/badge/ClawHub-v1.0.3-EC4899?style=flat-square)](https://clawhub.ai)
 [![Tessl](https://img.shields.io/badge/Tessl-0.1.1-3B82F6?style=flat-square)](https://tessl.io/registry/khazix-skills/neat-freak)
 
 → [SKILL.md](./neat-freak/SKILL.md) · [Article (Chinese)](https://mp.weixin.qq.com/s/tg1wd-iN2gWHWhXdY0faeg)
